@@ -23,11 +23,11 @@ motor <- SCC[grep("Vehicle", SCC$EI.Sector), "SCC"]
 
 # subset the entries from NEI dataFrame which have their SCC values 
 # equal to the values derived from the SCC DataFrame in the previous command
-motor.NEI<-subset(NEI,SCC %in% motor)
+motor.Baltimore<-subset(Baltimore,SCC %in% motor)
 
 # make a new DataFrame to store the year-wise PM2.5 emission from 
 # motor related sources
-yearwise.motor.emission <- ddply(motor.NEI, .(year),
+yearwise.motor.emission <- ddply(motor.Baltimore, .(year),
                                  summarise,
                                  TotalEmissions = sum(Emissions))
 
