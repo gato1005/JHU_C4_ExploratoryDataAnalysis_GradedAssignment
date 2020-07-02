@@ -38,7 +38,7 @@ png(filename = "plot5.png",width = 480,height = 480)
 # plot the result
 plot(yearwise.motor.emission$year,
      yearwise.motor.emission$TotalEmissions,
-     ylim = c(100000,200000),
+     ylim = c(50,400),
      type = "b",
      main = " Total Emission from motor sources in 1999-2008",
      xlab = "Year",ylab = expression('Total Emission of PM'[2.5]*"(in tons)"),
