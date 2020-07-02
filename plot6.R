@@ -51,22 +51,12 @@ func <- function(){
 # making a new dataframe
 Data <- rbind(yearwise.motor.emission.Bltm, yearwise.motor.emission.LA)
 
-# storing the change in emission over the years
-Data["change"]<-c(Data$TotalEmissions[1]-Data$TotalEmissions[2],
-                  Data$TotalEmissions[2]-Data$TotalEmissions[3],
-                  Data$TotalEmissions[3]-Data$TotalEmissions[4],
-                  NA,
-                  Data$TotalEmissions[5]-Data$TotalEmissions[6],
-                  Data$TotalEmissions[6]-Data$TotalEmissions[7],
-                  Data$TotalEmissions[7]-Data$TotalEmissions[8],
-                  NA)
-
 
 # store as image(png format)
 png(filename = "plot6.png",width = 480,height = 480)
 
 # plot the result
-ggplot(Data,aes(x=factor(year), y=change, fill=County)) + geom_bar(aes(fill = County), position = "dodge", stat="identity") + labs(x = "Year") + labs(y = expression("Change in Total Emissions (in log scale) of PM"[2.5])) + xlab("year") + ggtitle(expression("Change in Motor vehicle emission in Baltimore and Los Angeles")) + scale_y_continuous( labels = func())
+ggplot(Data,aes(x=factor(year), y=TotalEmissions, fill=County)) + geom_bar(aes(fill = County), position = "dodge", stat="identity") + labs(x = "Year") + labs(y = expression("Change in Total Emissions (in log scale) of PM"[2.5])) + xlab("year") + ggtitle(expression("Change in Motor vehicle emission in Baltimore and Los Angeles")) + scale_y_continuous( labels = func())
 
 # return to RStudio default window graphics device by closing the png
 dev.off()
